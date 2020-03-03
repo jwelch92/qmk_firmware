@@ -1,6 +1,10 @@
 #ifndef CONFIG_USER_H
 #define CONFIG_USER_H
 
+#ifndef PERMISSIVE_HOLD
+#define PERMISSIVE_HOLD
+#endif
+
 #include "../../config.h"
 
 // place overrides here

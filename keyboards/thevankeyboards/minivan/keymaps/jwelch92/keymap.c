@@ -24,28 +24,9 @@ enum tv44_keycodes {
 
 #define LOWER F(_LOWER)
 #define RAISE F(_RAISE)
-// #define WINDOW_SHORTCUT MO(_WINDOW_SHORTCUT)
-#define MAC_SHORTCUT MO(_MAC_SHORTCUT)
+#define MAC_SHORTCUT LT(_MAC_SHORTCUT, KC_ESC)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
-/* Window - Qwerty
- * ,--------------------------------------------------------------------------.
- * | Tab  |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |  Bksp |
- * |------`-----`-----`-----`-----`-----`-----`-----`-----`-----`-----`-------|
- * | Ctrl  |  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  |  ;  | Enter|
- * |-------`-----`-----`-----`-----`-----`-----`-----`-----`-----`-----`------|
- * | Shift  |  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  | /   |Shift|
- * |--------`-----`-----`-----`-----`-----`-----`-----`-----`-----`-----`-----|
- * | Ft   |  GUI  | Alt  | Space/LOWER | Space/RAISE |  '   |  [  |  ]  | Alt |
- * `--------------------------------------------------------------------------'
- */
-// [_WINDOW] = LAYOUT_arrow(
-// KC_TAB, KC_Q,   KC_W,   KC_E, KC_R,   KC_T,   KC_Y,   KC_U, KC_I,   KC_O,   KC_P,   KC_BSPC,
-// KC_LCTL,KC_A,   KC_S,   KC_D, KC_F,   KC_G,   KC_H,   KC_J, KC_K,   KC_L,   KC_SCLN,KC_ENT,
-// KC_LSFT,KC_Z,   KC_X,   KC_C, KC_V,   KC_B,   KC_N,   KC_M, KC_COMM,KC_DOT, KC_SLSH,KC_RSFT,
-// WINDOW_SHORTCUT,    KC_LGUI,KC_LALT,        RAISE,  LOWER,        KC_QUOT,KC_LBRC,KC_RBRC,KC_RALT
-// ),
 /* Mac - Qwerty
  * ,--------------------------------------------------------------------------.
  * | Tab  |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |  Bksp |
@@ -59,9 +40,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_MAC] = LAYOUT_arrow(
 KC_TAB, KC_Q,   KC_W,   KC_E, KC_R,   KC_T,   KC_Y,   KC_U, KC_I,   KC_O,   KC_P,   KC_BSPC,
-KC_LCTRL, KC_A,   KC_S,   KC_D, KC_F,   KC_G,   KC_H,   KC_J, KC_K,   KC_L,   KC_SCLN,KC_ENT,
+MAC_SHORTCUT, KC_A,   KC_S,   KC_D, KC_F,   KC_G,   KC_H,   KC_J, KC_K,   KC_L,   KC_SCLN,KC_ENT,
 KC_LSFT, KC_Z,   KC_X,   KC_C, KC_V,   KC_B,   KC_N,   KC_M, KC_COMM,KC_DOT, KC_SLSH,KC_RSFT,
-MAC_SHORTCUT,    KC_LALT, KC_LGUI,              LOWER,  RAISE,        KC_QUOT,KC_LBRC,KC_RBRC,KC_RALT
+KC_LCTRL,    KC_LALT, KC_LGUI,              LOWER,  RAISE,        KC_QUOT,KC_LBRC,KC_RBRC,KC_RALT
 ),
 /* LOWER 
  * ,--------------------------------------------------------------------------.
@@ -97,23 +78,6 @@ _______,KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_F6,  KC_MINS,KC_PLUS,KC_LBRC,
 _______,KC_F7,  KC_F8,  KC_F9,  KC_F10, KC_F11, KC_F12, XXXXXXX,KC_HOME,KC_PGUP,KC_UP  ,KC_PGDN,
 XXXXXXX,_______,_______,                _______,XXXXXXX,        KC_END, KC_LEFT,KC_DOWN,KC_RIGHT
 ),
-/* Window Shortcut
- * ,--------------------------------------------------------------------------.
- * |  ESC |WinOf|WinUp|     |     |Sh+Ca|     | PgUp| UP  | PgDo|PrtSc| DELET |
- * |------`-----`-----`-----`-----`-----`-----`-----`-----`-----`-----`-------|
- * |       |WinLe|WinDo|WinRi|     |Al+Ca|CapsL| LEFT| DOWN|RIGHT|     |      |
- * |-------`-----`-----`-----`-----`-----`-----`-----`-----`-----`-----`------|
- * |        |WinLW|WinRW|     |     |Ct+Ca|ScroL| HOME|     | END |     | Ctrl|
- * |--------`-----`-----`-----`-----`-----`-----`-----`-----`-----`-----`-----|
- * |      | DeskL | DeskR| Task Manager|    DeskX    | MOUSE|     |     | LED |
- * `--------------------------------------------------------------------------'
- */
-// [_WINDOW_SHORTCUT] = LAYOUT_arrow(
-// KC_ESC ,LALT(KC_F4)        ,LGUI(KC_UP)         ,XXXXXXX       ,XXXXXXX,S(KC_CAPS)         ,XXXXXXX          ,KC_PGUP,KC_UP  ,KC_PGDN ,KC_PSCR,KC_DEL,
-// _______,LGUI(KC_LEFT)      ,LGUI(KC_DOWN)       ,LGUI(KC_RIGHT),XXXXXXX,LALT(KC_CAPS)      ,KC_CAPS          ,KC_LEFT,KC_DOWN,KC_RIGHT,XXXXXXX,XXXXXXX,
-// _______,LGUI(LSFT(KC_LEFT)),LGUI(LSFT(KC_RIGHT)),XXXXXXX       ,XXXXXXX,LCTL(KC_CAPS)      ,KC_SLCK          ,KC_HOME,XXXXXXX,KC_END  ,XXXXXXX,KC_RCTL,
-// _______,LGUI(LCTL(KC_LEFT)),LGUI(LCTL(KC_RIGHT)),                       LCTL(LALT(KC_DEL)) ,LGUI(LCTL(KC_F4)),        MOUSE  ,XXXXXXX ,XXXXXXX,BACKLIT
-// ),
 /* Mac Shortcut
  * ,--------------------------------------------------------------------------.
  * |  ESC |CmdUp|CmdDo|     |     |     |     | PgUp| UP  | PgDo|PrtSc| DELET |
@@ -126,10 +90,10 @@ XXXXXXX,_______,_______,                _______,XXXXXXX,        KC_END, KC_LEFT,
  * `--------------------------------------------------------------------------'
  */
 [_MAC_SHORTCUT] = LAYOUT_arrow(
-KC_ESC ,LGUI(KC_UP)        ,LGUI(KC_DOWN)         ,XXXXXXX       ,XXXXXXX,XXXXXXX         ,XXXXXXX          ,KC_PGUP,KC_UP  ,KC_PGDN ,KC_PSCR,KC_DEL,
-_______,LALT(LSFT(KC_LEFT))      ,LALT(LSFT(KC_RIGHT))       ,XXXXXXX,LGUI(LCTL(KC_F)),XXXXXXX      ,KC_CAPS          ,KC_LEFT,KC_DOWN,KC_RIGHT,XXXXXXX,XXXXXXX,
-_______,LGUI(LSFT(KC_LEFT)),LGUI(LSFT(KC_RIGHT)),XXXXXXX       ,XXXXXXX,XXXXXXX     ,XXXXXXX          ,KC_HOME,XXXXXXX,KC_END  ,XXXXXXX,KC_RCTL,
-_______,_______,_______, _______,_______,        MOUSE  ,XXXXXXX ,XXXXXXX,BACKLIT
+KC_ESC ,LCTL(KC_LEFT),LCTL(KC_UP),LCTL(KC_RIGHT),LGUI(LSFT(KC_4)),XXXXXXX,XXXXXXX,KC_PGUP,KC_UP  ,KC_PGDN ,KC_PSCR,KC_DEL,
+_______,LALT(LSFT(KC_LEFT))  ,LALT(LSFT(KC_RIGHT)),XXXXXXX,LGUI(LCTL(KC_F)),XXXXXXX,KC_CAPS,KC_LEFT,KC_DOWN,KC_RIGHT,XXXXXXX,XXXXXXX,
+_______,LGUI(LSFT(KC_LEFT)),LGUI(LSFT(KC_RIGHT)),XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,KC_HOME,XXXXXXX,KC_END  ,XXXXXXX,KC_RCTL,
+_______,_______,_______, _______,_______, MOUSE,XXXXXXX ,XXXXXXX,BACKLIT
 ),
 /* MOUSE
  * ,--------------------------------------------------------------------------.
